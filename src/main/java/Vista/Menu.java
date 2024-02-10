@@ -45,6 +45,8 @@ public class Menu extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         roles = new javax.swing.JMenuItem();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        categoria = new javax.swing.JCheckBoxMenuItem();
+        res = new javax.swing.JCheckBoxMenuItem();
 
         menuListas.setText("Listas");
 
@@ -161,6 +163,26 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu5.add(jCheckBoxMenuItem1);
 
+        categoria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        categoria.setSelected(true);
+        categoria.setText("Categoria");
+        categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoriaActionPerformed(evt);
+            }
+        });
+        jMenu5.add(categoria);
+
+        res.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        res.setSelected(true);
+        res.setText("Receta");
+        res.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resActionPerformed(evt);
+            }
+        });
+        jMenu5.add(res);
+
         recetas.add(jMenu5);
 
         setJMenuBar(recetas);
@@ -230,6 +252,36 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
+    private void resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resActionPerformed
+        // TODO add your handling code here:
+                   
+       Recetas pV=new Recetas();
+        escritorio.add(pV);
+        pV.show();
+        
+    }//GEN-LAST:event_resActionPerformed
+
+    private void categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+       Categoria pV=new Categoria();
+        escritorio.add(pV);
+        pV.show();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_categoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,6 +319,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem categoria;
     public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
@@ -285,6 +338,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem opLEstatico;
     private javax.swing.JMenuItem opLPersonas;
     private javax.swing.JMenuBar recetas;
+    private javax.swing.JCheckBoxMenuItem res;
     private javax.swing.JMenuItem roles;
     // End of variables declaration//GEN-END:variables
 }

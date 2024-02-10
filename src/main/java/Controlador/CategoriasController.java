@@ -5,7 +5,7 @@
 package Controlador;
 
 import Conexion.ConexionBDD;
-import Modelo.Persona;
+import Modelo.CategoriaM;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,46 +15,38 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author HP
  */
-public class UsuariocoController {
+public class CategoriasController {
     
-     private Persona persona;
-   ConexionBDD conectar =new ConexionBDD() ;
+    private CategoriaM categoria;
+    ConexionBDD conectar =new ConexionBDD() ;
    Connection conectado=(Connection)conectar.conectar();
    PreparedStatement ejecutar;
    ResultSet resultado;
    int res;
-   
-   
-   public Persona getPersona() {
-        return persona;
+
+    public CategoriaM getCategoriaM() {
+        return categoria;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setCategoriaM(CategoriaM categoria) {
+        this.categoria = categoria;
     }
-    
-    
-    public void CrearUsuario(Persona r) {
+       
+    public void CrearCategoria (CategoriaM r) {
     try {
-        String sql = "CALL InsertarUsuario(?,?,?,?)";
+        String sql = "CALL CrearCategoria (?)";
         
         try (PreparedStatement ejecutar = conectado.prepareCall(sql)) {
-            ejecutar.setString(1,r.getNombre() );
-            ejecutar.setString(2,r.getApellido());
-            ejecutar.setString(3,r.getContrasenia());
-            ejecutar.setInt(4,r.getRol());
-            
-            
+            ejecutar.setString(1,r.getTema() );
             
             res = ejecutar.executeUpdate();
 
             if (res > 0) {
-                JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO");
+                JOptionPane.showMessageDialog(null, "CATEGORIA CREADA CON EXITO");
             ejecutar.close();
             
             } else {
@@ -72,11 +64,11 @@ public class UsuariocoController {
     
     
     
-    public ArrayList<Object[]>  ObtenerUsuarios() {
+    public ArrayList<Object[]>  ObtenerCategoria() {
     ArrayList<Object[]> listaUsuario= new ArrayList<>();
 
     try {
-        String sql = "CALL ObtenerTodosUsuarios()"; 
+        String sql = "CALL ObtenerTodasCategorias()"; 
         
         ejecutar=(PreparedStatement)conectado.prepareCall(sql);
          ResultSet res = ejecutar.executeQuery();
@@ -86,8 +78,8 @@ public class UsuariocoController {
             int cont =1;
 
            while (res.next()) {
-                Object[] fila = new Object[5]; 
-                for (int i = 1; i <5; i++) {
+                Object[] fila = new Object[2]; 
+                for (int i = 1; i <2; i++) {
                     fila[i] = res.getObject(i+1);
                                 
                 }
@@ -110,22 +102,20 @@ return null;
     }
     
     
-    public void ActualizarUsuario(Persona r) {
+    public void ActualizarCategoria (CategoriaM r) {
     try {
-        String sql = "CALL ActualizarUsuario(?,?,?,?,?)";
+        String sql = "CALL ActualizarCategoria(?,?)";
         ejecutar = (PreparedStatement) conectado.prepareCall(sql);
         ejecutar.setInt(1, r.getId());
-        ejecutar.setString(2, r.getNombre());
-        ejecutar.setString(3, r.getApellido());
-        ejecutar.setString(4, r.getContrasenia()); 
-        ejecutar.setInt(5, r.getRol());
+        ejecutar.setString(2, r.getTema());
+        
 
         int res = ejecutar.executeUpdate();
 
         if (res > 0) {
-            JOptionPane.showMessageDialog(null, "USUARIO ACTUALIZADO CON ÉXITO");
+            JOptionPane.showMessageDialog(null, "CATEGORIA ACTUALIZADA CON ÉXITO");
         } else  {
-            JOptionPane.showMessageDialog(null, "NO SE PUDO ACTUALIZAR LOS DATOS DEL USUARIO");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO ACTUALIZAR LOS DATOS DE LA CATEGORIA");
         }
 
     } catch (SQLException e) {
@@ -137,23 +127,26 @@ return null;
    
     
     
-   public void EliminarUsuario(Persona p) {
-    String sql = "CALL EliminarUsuario(?)";
+   public void EliminarCategoria(CategoriaM p) {
+    String sql = "CALL EliminarCategoria(?)";
 
     try (PreparedStatement ejecutar = conectado.prepareCall(sql)) {
         ejecutar.setInt(1, p.getId());
 
         boolean resultado = ejecutar.execute(); 
         if (!resultado) {
-            JOptionPane.showMessageDialog(null, "USUARIO ELIMINADO CON ÉXITO");
+            JOptionPane.showMessageDialog(null, "CATEGORIA ELIMINADA CON ÉXITO");
         } else {
-            JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR EL USUARIO");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR LA CATEGORIA ");
         }
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "COMUNICARSE CON EL ADMINISTRADOR: " + e.getMessage());
     }
 }
 
-
-   
+    
+    
+    
+    
+    
 }
