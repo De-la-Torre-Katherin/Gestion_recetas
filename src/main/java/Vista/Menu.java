@@ -43,7 +43,6 @@ public class Menu extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         recetas = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
-        roles = new javax.swing.JMenuItem();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         categoria = new javax.swing.JCheckBoxMenuItem();
         res = new javax.swing.JCheckBoxMenuItem();
@@ -144,15 +143,6 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu5.setText("GESTION RECETAS ");
 
-        roles.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        roles.setText("Roles");
-        roles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rolesActionPerformed(evt);
-            }
-        });
-        jMenu5.add(roles);
-
         jCheckBoxMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("Usuario");
@@ -230,14 +220,6 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void rolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rolesActionPerformed
-        // TODO add your handling code here:
-        
-         Roles pV=new Roles();
-        escritorio.add(pV);
-        pV.show();
-    }//GEN-LAST:event_rolesActionPerformed
 
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -339,6 +321,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem opLPersonas;
     private javax.swing.JMenuBar recetas;
     private javax.swing.JCheckBoxMenuItem res;
-    private javax.swing.JMenuItem roles;
     // End of variables declaration//GEN-END:variables
 }
