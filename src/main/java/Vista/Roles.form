@@ -53,13 +53,17 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" min="-2" pref="339" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
+                              <Component id="btneliminar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="btnguardar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               <Component id="btnactualizar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
-                              <Component id="btneliminar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="btnlimpiar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
@@ -77,7 +81,7 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtrol" min="-2" pref="222" max="-2" attributes="0"/>
-                          <Component id="txtid" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="txtid" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
@@ -88,17 +92,12 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="27" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="txtid" pref="36" max="32767" attributes="0"/>
-                  </Group>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtid" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblrol" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="txtrol" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
@@ -111,7 +110,9 @@
                   <Component id="btnactualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btneliminar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnlimpiar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -166,6 +167,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblrolesMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -175,6 +179,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtid">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnlimpiar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpiar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlimpiarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

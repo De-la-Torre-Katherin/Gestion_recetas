@@ -44,6 +44,7 @@ public class Menu extends javax.swing.JFrame {
         recetas = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         roles = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
 
         menuListas.setText("Listas");
 
@@ -150,6 +151,16 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu5.add(roles);
 
+        jCheckBoxMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Usuario");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jCheckBoxMenuItem1);
+
         recetas.add(jMenu5);
 
         setJMenuBar(recetas);
@@ -206,6 +217,19 @@ public class Menu extends javax.swing.JFrame {
         pV.show();
     }//GEN-LAST:event_rolesActionPerformed
 
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    
+          Usuario pV=new Usuario();
+        escritorio.add(pV);
+        pV.show();
+        
+        
+        
+         
+        
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,6 +268,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane escritorio;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
