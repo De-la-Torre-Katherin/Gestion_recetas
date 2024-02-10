@@ -69,6 +69,7 @@ public class Roles extends javax.swing.JInternalFrame {
         tblroles = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
+        btnlimpiar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -131,9 +132,21 @@ public class Roles extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblroles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblrolesMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblroles);
 
         jLabel1.setText("Id Rol:");
+
+        btnlimpiar.setText("Limpiar");
+        btnlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,12 +159,15 @@ public class Roles extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(253, 253, 253)
+                                .addComponent(btneliminar))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnguardar)
                                 .addGap(52, 52, 52)
                                 .addComponent(btnactualizar))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(253, 253, 253)
-                                .addComponent(btneliminar)))
+                                .addGap(71, 71, 71)
+                                .addComponent(btnlimpiar)))
                         .addGap(98, 98, 98))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,20 +179,17 @@ public class Roles extends javax.swing.JInternalFrame {
                                 .addGap(77, 77, 77)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtrol, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(90, 90, 90))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(txtid, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblrol, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtrol, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,21 +200,24 @@ public class Roles extends javax.swing.JInternalFrame {
                     .addComponent(btnguardar)
                     .addComponent(btnactualizar)
                     .addComponent(btneliminar))
-                .addGap(47, 47, 47))
+                .addGap(18, 18, 18)
+                .addComponent(btnlimpiar)
+                .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-   RolController rc=new RolController(txtrol.getText());
+   RolController rc=new RolController(txtrol.getText(),0);
       
        rc.CrearRol(rc);
        listaRol.add(rc);
        setDatos();
        tblroles.setModel(modelo);
    
-      
+       limpiar();
+        cargarTabla();
 
 
 
@@ -229,38 +245,40 @@ public class Roles extends javax.swing.JInternalFrame {
      rc.EliminarRol(rol_id);
       
         
-        
+         limpiar();
+        cargarTabla();
        
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
    
-     int rol_id=Integer.parseInt(txtid.getText());
-     String tipo=txtrol.toString();
+    //int rol_id=Integer.parseInt(txtid.getText());
+     //String tipo=txtrol.toString();
        
-     RolController rc=new RolController(tipo);
-        
+     RolController rc=new RolController(txtrol.getText(),0);
+     
      rc.ActualizarRol(rc);
-      
-        
+       listaRol.add(rc);
+       setDatos();
+       tblroles.setModel(modelo);
+ 
+        limpiar();
+        cargarTabla();
         
     }//GEN-LAST:event_btnactualizarActionPerformed
 
+    private void tblrolesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblrolesMouseClicked
+         DefaultTableModel dtm=(DefaultTableModel)tblroles.getModel();
+        txtid.setText( dtm.getValueAt(tblroles.getSelectedRow(),0).toString());
+        txtrol.setText((String) dtm.getValueAt(tblroles.getSelectedRow(),1));
+         
+    }//GEN-LAST:event_tblrolesMouseClicked
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnactualizar;
-    private javax.swing.JButton btneliminar;
-    private javax.swing.JButton btnguardar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel lblrol;
-    private javax.swing.JTable tblroles;
-    private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtrol;
-    // End of variables declaration//GEN-END:variables
-
+    private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
+        // TODO add your handling code here:
+        txtid.setText("");
+        txtrol.setText("");
+    }//GEN-LAST:event_btnlimpiarActionPerformed
 
 private void limpiar (){
     int a = modelo.getRowCount()-1;
@@ -271,6 +289,32 @@ private void limpiar (){
 }
 
 
+private void cargarTabla(){
+    RolController pc = new RolController();
+    ArrayList<Object[]>lista=pc.ObtenerRol();
+    for(Object[] filas:lista){
+        modelo.addRow(filas);
+    }
+    
+    tblroles.setModel(modelo);
+    
+}
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnactualizar;
+    private javax.swing.JButton btneliminar;
+    private javax.swing.JButton btnguardar;
+    private javax.swing.JButton btnlimpiar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblrol;
+    private javax.swing.JTable tblroles;
+    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtrol;
+    // End of variables declaration//GEN-END:variables
 
 
 

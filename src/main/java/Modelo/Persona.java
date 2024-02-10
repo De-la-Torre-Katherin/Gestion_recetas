@@ -9,19 +9,38 @@ package Modelo;
  * @author HP
  */
 public class Persona {
- 
+     private int id;
      private String nombre;
      private String apellido;
      private String contrasenia;
+     private int rol;
 
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido, String contrasenia) {
-      
+    public Persona(int id,String nombre, String apellido, String contrasenia,int rol) {
+        this.id=id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.contrasenia = contrasenia;
+        this.rol=rol;
+        
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getRol() {
+        return rol;
+    }
+
+    public void setRol(int rol) {
+        this.rol = rol;
     }
 
     
@@ -49,10 +68,5 @@ public class Persona {
         this.contrasenia = contrasenia;
     }
      
-     
-     @Override
-    public String toString() {
-        return "DATOS DE PERSONA";}
     
-        
 }
