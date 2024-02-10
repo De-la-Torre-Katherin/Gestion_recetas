@@ -4,8 +4,6 @@
  */
 package Vista;
 
-import Controlador.RolController;
-import Controlador.UsuariocoController;
 import Modelo.Persona;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -77,10 +75,10 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblusuarios = new javax.swing.JTable();
         pwrcontrasenia = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
+        acatualizar = new javax.swing.JButton();
+        guar = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
         txtrol = new javax.swing.JTextField();
         lblrol = new javax.swing.JLabel();
 
@@ -145,28 +143,33 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
         });
         jScrollPane1.setViewportView(tblusuarios);
 
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                eliminarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Actualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        acatualizar.setText("Actualizar");
+        acatualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                acatualizarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Guardar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        guar.setText("Guardar");
+        guar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                guarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Buscar");
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
 
         txtrol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,10 +211,10 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
                                 .addComponent(pwrcontrasenia)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton1)
-                            .addComponent(jButton4)
-                            .addComponent(jButton2))
+                            .addComponent(guar)
+                            .addComponent(eliminar)
+                            .addComponent(buscar)
+                            .addComponent(acatualizar))
                         .addGap(67, 67, 67))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
@@ -225,7 +228,7 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(guar))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -248,11 +251,11 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
                             .addComponent(txtrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(acatualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(eliminar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(buscar)
                         .addGap(47, 47, 47)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -269,16 +272,16 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtapellidoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void guarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guarActionPerformed
        
-Persona p =new Persona (Integer.parseInt(txtid.getText()),txtnombre.getText(), txtapellido.getText(), pwrcontrasenia.getText(), Integer.parseInt(txtrol.getText()));
+Persona p =new Persona (0,txtnombre.getText(), txtapellido.getText(), pwrcontrasenia.getText(), Integer.parseInt(txtrol.getText()));
         Persona ep = new Persona();
     UsuariocoController u = new UsuariocoController();
     u.CrearUsuario(p);  
     listaUsuario.add(p);
     setDatos();
    
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_guarActionPerformed
 
     private void txtrolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrolActionPerformed
         // TODO add your handling code here:
@@ -320,7 +323,7 @@ Persona p =new Persona (Integer.parseInt(txtid.getText()),txtnombre.getText(), t
         
     }//GEN-LAST:event_tblusuariosMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void acatualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acatualizarActionPerformed
         // TODO add your handling code here:
         
     Persona p = new Persona(Integer.parseInt(txtid.getText()),txtnombre.getText(), txtapellido.getText(),pwrcontrasenia.getText(),Integer.parseInt(txtrol.getText()));
@@ -330,9 +333,9 @@ Persona p =new Persona (Integer.parseInt(txtid.getText()),txtnombre.getText(), t
      u.ActualizarUsuario(p);
         
                
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_acatualizarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         // TODO add your handling code here:
      
             
@@ -344,14 +347,18 @@ Persona p =new Persona (Integer.parseInt(txtid.getText()),txtnombre.getText(), t
 
       
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton acatualizar;
+    private javax.swing.JButton buscar;
+    private javax.swing.JButton eliminar;
+    private javax.swing.JButton guar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblapellido;
     private javax.swing.JLabel lblcontrasenia;

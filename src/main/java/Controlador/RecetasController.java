@@ -6,6 +6,7 @@ package Controlador;
 
 import Conexion.ConexionBDD;
 import Modelo.Persona;
+import Modelo.Recetario;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,46 +16,48 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author HP
  */
-public class UsuariocoController {
+public class RecetasController {
     
-     private Persona persona;
+     private Recetario Recetario;
+ 
    ConexionBDD conectar =new ConexionBDD() ;
    Connection conectado=(Connection)conectar.conectar();
    PreparedStatement ejecutar;
    ResultSet resultado;
    int res;
-   
-   
-   public Persona getPersona() {
-        return persona;
+
+    public Recetario getRecetario() {
+        return Recetario;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setRecetario(Recetario Recetario) {
+        this.Recetario = Recetario;
     }
+   
+   
+   
     
-    
-    public void CrearUsuario(Persona r) {
+    public void CrearReceta(Recetario r) {
     try {
-        String sql = "CALL InsertarUsuario(?,?,?,?)";
+        String sql = "CALL CrearReceta(?,?,?,?,?)";
         
         try (PreparedStatement ejecutar = conectado.prepareCall(sql)) {
-            ejecutar.setString(1,r.getNombre() );
-            ejecutar.setString(2,r.getApellido());
-            ejecutar.setString(3,r.getContrasenia());
-            ejecutar.setInt(4,r.getRol());
+            ejecutar.setString(1,r.getTitulo() );
+            ejecutar.setString(2,r.getIngredientes());
+            ejecutar.setString(3,r.getPreparacion());
+            ejecutar.setInt(4,r.getCatid());
+            ejecutar.setInt(5,r.getUsuid());
             
             
             
             res = ejecutar.executeUpdate();
 
             if (res > 0) {
-                JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO");
+                JOptionPane.showMessageDialog(null, "RECETA CR4EADA CON EXITO");
             ejecutar.close();
             
             } else {
@@ -72,11 +75,11 @@ public class UsuariocoController {
     
     
     
-    public ArrayList<Object[]>  ObtenerUsuarios() {
+    public ArrayList<Object[]>  ObtenerRecetas() {
     ArrayList<Object[]> listaUsuario= new ArrayList<>();
 
     try {
-        String sql = "CALL ObtenerTodosUsuarios()"; 
+        String sql = "CALL ObtenerTodasRecetas()"; 
         
         ejecutar=(PreparedStatement)conectado.prepareCall(sql);
          ResultSet res = ejecutar.executeQuery();
@@ -86,8 +89,8 @@ public class UsuariocoController {
             int cont =1;
 
            while (res.next()) {
-                Object[] fila = new Object[5]; 
-                for (int i = 1; i <5; i++) {
+                Object[] fila = new Object[6]; 
+                for (int i = 1; i <6; i++) {
                     fila[i] = res.getObject(i+1);
                                 
                 }
@@ -110,22 +113,23 @@ return null;
     }
     
     
-    public void ActualizarUsuario(Persona r) {
+    public void ActualizarRecetas(Recetario r) {
     try {
-        String sql = "CALL ActualizarUsuario(?,?,?,?,?)";
+        String sql = "CALL ActualizarReceta(?,?,?,?,?,?)";
         ejecutar = (PreparedStatement) conectado.prepareCall(sql);
-        ejecutar.setInt(1, r.getId());
-        ejecutar.setString(2, r.getNombre());
-        ejecutar.setString(3, r.getApellido());
-        ejecutar.setString(4, r.getContrasenia()); 
-        ejecutar.setInt(5, r.getRol());
+        ejecutar.setInt(1, r.getReid());
+        ejecutar.setString(2, r.getTitulo());
+        ejecutar.setString(3, r.getIngredientes());
+        ejecutar.setString(4, r.getPreparacion());
+        ejecutar.setInt(5, r.getCatid());
+         ejecutar.setInt(6, r.getUsuid());
 
         int res = ejecutar.executeUpdate();
 
         if (res > 0) {
-            JOptionPane.showMessageDialog(null, "USUARIO ACTUALIZADO CON ÉXITO");
+            JOptionPane.showMessageDialog(null, "RECETA ACTUALIZADA CON ÉXITO");
         } else  {
-            JOptionPane.showMessageDialog(null, "NO SE PUDO ACTUALIZAR LOS DATOS DEL USUARIO");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO ACTUALIZAR LOS DATOS DE LA RECETA");
         }
 
     } catch (SQLException e) {
@@ -137,23 +141,27 @@ return null;
    
     
     
-   public void EliminarUsuario(Persona p) {
-    String sql = "CALL EliminarUsuario(?)";
+   public void EliminarReceta(Recetario p) {
+    String sql = "CALL EliminarReceta(?)";
 
     try (PreparedStatement ejecutar = conectado.prepareCall(sql)) {
-        ejecutar.setInt(1, p.getId());
+        ejecutar.setInt(1, p.getReid());
 
         boolean resultado = ejecutar.execute(); 
         if (!resultado) {
-            JOptionPane.showMessageDialog(null, "USUARIO ELIMINADO CON ÉXITO");
+            JOptionPane.showMessageDialog(null, "rfECETA ELIMINADA CON ÉXITO");
         } else {
-            JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR EL USUARIO");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR LA RECETA");
         }
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "COMUNICARSE CON EL ADMINISTRADOR: " + e.getMessage());
     }
 }
-
-
-   
+    
+    
+    
+    
+    
+    
+    
 }
