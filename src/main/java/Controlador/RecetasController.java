@@ -5,7 +5,6 @@
 package Controlador;
 
 import Conexion.ConexionBDD;
-import Modelo.Persona;
 import Modelo.Recetario;
 import java.awt.HeadlessException;
 import java.sql.Connection;
