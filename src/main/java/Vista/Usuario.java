@@ -1,23 +1,22 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
 
+import Controlador.UsuariocoController;
 import Modelo.Persona;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
-import Controlador.UsuariocoController;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author HP
  */
-public class Usuario extends javax.swing.JInternalFrame {
-    
-    
-    
+public class Usuario extends javax.swing.JFrame {
+
+     
 ArrayList<Persona>listaUsuario=new ArrayList<>();
     
     DefaultTableModel modelo=new DefaultTableModel();
@@ -55,7 +54,6 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
        
    }
    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,11 +63,14 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnregresar = new javax.swing.JButton();
         lblnombre = new javax.swing.JLabel();
         lblcontrasenia = new javax.swing.JLabel();
         lblapellido = new javax.swing.JLabel();
         lblid = new javax.swing.JLabel();
+        txtrol = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
+        lblrol = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
         txtapellido = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -78,34 +79,23 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
         eliminar = new javax.swing.JButton();
         acatualizar = new javax.swing.JButton();
         guar = new javax.swing.JButton();
-        buscar = new javax.swing.JButton();
-        txtrol = new javax.swing.JTextField();
-        lblrol = new javax.swing.JLabel();
+        btnregresar1 = new javax.swing.JButton();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
-        setTitle("USUARIOS");
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameActivated(evt);
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+        btnregresar.setText("Regresar");
+        btnregresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregresarActionPerformed(evt);
             }
         });
 
-        lblnombre.setText("Nombre:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+
+        lblnombre.setText("Usuario:");
 
         lblcontrasenia.setText("Contraseña:");
 
@@ -113,11 +103,19 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
 
         lblid.setText("Usuario id");
 
+        txtrol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtrolActionPerformed(evt);
+            }
+        });
+
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
             }
         });
+
+        lblrol.setText("Rol:");
 
         txtapellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,20 +162,12 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
             }
         });
 
-        buscar.setText("Buscar");
-        buscar.addActionListener(new java.awt.event.ActionListener() {
+        btnregresar1.setText("Regresar");
+        btnregresar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
+                btnregresar1ActionPerformed(evt);
             }
         });
-
-        txtrol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtrolActionPerformed(evt);
-            }
-        });
-
-        lblrol.setText("Rol:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,52 +176,41 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblrol, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtrol, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtnombre))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtapellido))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pwrcontrasenia)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(guar)
-                            .addComponent(eliminar)
-                            .addComponent(buscar)
-                            .addComponent(acatualizar))
-                        .addGap(67, 67, 67))))
+                    .addComponent(lblnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblrol, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pwrcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                    .addComponent(txtrol, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnregresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guar)
+                    .addComponent(eliminar)
+                    .addComponent(acatualizar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(guar))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -240,29 +219,34 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
                             .addComponent(lblapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(pwrcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(pwrcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblrol, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(guar)
+                        .addGap(16, 16, 16)
                         .addComponent(acatualizar)
                         .addGap(18, 18, 18)
                         .addComponent(eliminar)
                         .addGap(18, 18, 18)
-                        .addComponent(buscar)
-                        .addGap(47, 47, 47)))
+                        .addComponent(btnregresar1)
+                        .addGap(28, 28, 28)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtrolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtrolActionPerformed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
         // TODO add your handling code here:
@@ -272,25 +256,64 @@ ArrayList<Persona>listaUsuario=new ArrayList<>();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtapellidoActionPerformed
 
+    private void tblusuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblusuariosMouseClicked
+        // TODO add your handling code here:
+
+        DefaultTableModel dtm = (DefaultTableModel) tblusuarios.getModel();
+
+        int filaSeleccionada = tblusuarios.getSelectedRow();
+        if (filaSeleccionada != -1) {
+
+            txtid.setText(dtm.getValueAt(filaSeleccionada, 0).toString());
+            txtnombre.setText((String) dtm.getValueAt(filaSeleccionada, 1));
+            txtapellido.setText((String) dtm.getValueAt(filaSeleccionada, 2));
+            // NOTA: Considera el uso de un JPasswordField para contraseñas
+            pwrcontrasenia.setText((String) dtm.getValueAt(filaSeleccionada, 3));
+            txtrol.setText(dtm.getValueAt(filaSeleccionada, 4).toString());
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Seleccione una fila antes de editar.");
+        }
+
+    }//GEN-LAST:event_tblusuariosMouseClicked
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+
+        int idUsuario = Integer.parseInt(txtid.getText());
+        Persona p = new Persona(idUsuario, txtnombre.getText(), txtapellido.getText(), pwrcontrasenia.getText(), Integer.parseInt(txtrol.getText()));
+
+        UsuariocoController rc = new UsuariocoController();
+        rc.EliminarUsuario(p);
+
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    private void acatualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acatualizarActionPerformed
+        // TODO add your handling code here:
+
+        Persona p = new Persona(Integer.parseInt(txtid.getText()),txtnombre.getText(), txtapellido.getText(),pwrcontrasenia.getText(),Integer.parseInt(txtrol.getText()));
+
+        UsuariocoController u= new UsuariocoController();
+
+        u.ActualizarUsuario(p);
+
+    }//GEN-LAST:event_acatualizarActionPerformed
+
     private void guarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guarActionPerformed
-       
-Persona p =new Persona (0,txtnombre.getText(), txtapellido.getText(), pwrcontrasenia.getText(), Integer.parseInt(txtrol.getText()));
+
+        Persona p =new Persona (0,txtnombre.getText(), txtapellido.getText(), pwrcontrasenia.getText(), Integer.parseInt(txtrol.getText()));
         Persona ep = new Persona();
-    UsuariocoController u = new UsuariocoController();
-    u.CrearUsuario(p);  
-    listaUsuario.add(p);
-    setDatos();
-   
+        UsuariocoController u = new UsuariocoController();
+        u.CrearUsuario(p);
+        listaUsuario.add(p);
+        setDatos();
+
     }//GEN-LAST:event_guarActionPerformed
 
-    private void txtrolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrolActionPerformed
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtrolActionPerformed
-
-    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
-        // TODO add your handling code here:
-         
-        UsuariocoController rc=new UsuariocoController();
+        
+            UsuariocoController rc=new UsuariocoController();
         
        ArrayList<Object[]>listas= rc.ObtenerUsuarios();
        
@@ -300,63 +323,60 @@ Persona p =new Persona (0,txtnombre.getText(), txtapellido.getText(), pwrcontras
         tblusuarios.setModel(modelo);
         
         
-    }//GEN-LAST:event_formInternalFrameActivated
+        
+    }//GEN-LAST:event_formWindowActivated
 
-    private void tblusuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblusuariosMouseClicked
+    private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
+    
+    }//GEN-LAST:event_btnregresarActionPerformed
+
+    private void btnregresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresar1ActionPerformed
         // TODO add your handling code here:
-        
-    DefaultTableModel dtm = (DefaultTableModel) tblusuarios.getModel();
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnregresar1ActionPerformed
 
-    int filaSeleccionada = tblusuarios.getSelectedRow();
-    if (filaSeleccionada != -1) {
-      
-        txtid.setText(dtm.getValueAt(filaSeleccionada, 0).toString());
-        txtnombre.setText((String) dtm.getValueAt(filaSeleccionada, 1));
-        txtapellido.setText((String) dtm.getValueAt(filaSeleccionada, 2));
-        // NOTA: Considera el uso de un JPasswordField para contraseñas
-        pwrcontrasenia.setText((String) dtm.getValueAt(filaSeleccionada, 3));
-        txtrol.setText(dtm.getValueAt(filaSeleccionada, 4).toString());
-    } else {
-        
-        JOptionPane.showMessageDialog(null, "Seleccione una fila antes de editar.");
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Usuario().setVisible(true);
+            }
+        });
     }
-        
-    }//GEN-LAST:event_tblusuariosMouseClicked
-
-    private void acatualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acatualizarActionPerformed
-        // TODO add your handling code here:
-        
-    Persona p = new Persona(Integer.parseInt(txtid.getText()),txtnombre.getText(), txtapellido.getText(),pwrcontrasenia.getText(),Integer.parseInt(txtrol.getText()));
-      
-        UsuariocoController u= new UsuariocoController();
-     
-     u.ActualizarUsuario(p);
-        
-               
-    }//GEN-LAST:event_acatualizarActionPerformed
-
-    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
-     
-            
-   int idUsuario = Integer.parseInt(txtid.getText());
-    Persona p = new Persona(idUsuario, txtnombre.getText(), txtapellido.getText(), pwrcontrasenia.getText(), Integer.parseInt(txtrol.getText()));
-
-    UsuariocoController rc = new UsuariocoController();
-    rc.EliminarUsuario(p);
-
-      
-        
-    }//GEN-LAST:event_eliminarActionPerformed
-
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acatualizar;
-    private javax.swing.JButton buscar;
+    private javax.swing.JButton btnregresar;
+    private javax.swing.JButton btnregresar1;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton guar;
     private javax.swing.JScrollPane jScrollPane1;
