@@ -36,46 +36,50 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblnombre" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="lblid" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                  <Component id="lblapellido" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                  <Component id="lblcontrasenia" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                  <Component id="lblrol" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="pwrcontrasenia" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                  <Component id="txtapellido" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="txtnombre" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtid" alignment="0" pref="180" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblnombre" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="lblid" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="lblapellido" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="lblcontrasenia" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="lblrol" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtrol" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pwrcontrasenia" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                                  <Component id="txtapellido" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="txtnombre" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtid" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnregresar1" pref="84" max="32767" attributes="0"/>
+                                  <Component id="acatualizar" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="guar" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="eliminar" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
-                  <Component id="txtrol" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="562" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnregresar1" min="-2" pref="84" max="-2" attributes="0"/>
-                  <Component id="guar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="eliminar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="acatualizar" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="562" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="105" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblid" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -96,15 +100,9 @@
                           <Component id="lblcontrasenia" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="pwrcontrasenia" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblrol" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="txtrol" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                       <Component id="guar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="acatualizar" min="-2" max="-2" attributes="0"/>
@@ -112,11 +110,16 @@
                       <Component id="eliminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnregresar1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Component id="jScrollPane1" min="-2" pref="355" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblrol" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="txtrol" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="154" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
