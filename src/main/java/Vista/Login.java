@@ -173,6 +173,8 @@ public class Login extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -218,7 +220,7 @@ public class Login extends javax.swing.JFrame {
             } else if ("SI EXISTE EL USUARIO".equals(resultado)) {
                 
                 JOptionPane.showMessageDialog(null, "DATOS INGESADOS CORRECTAMENTE. ¡BIENVENIDO USUARIO!");
-                 Recetasus menu = new Recetasus();
+                 MenuUsu menu = new MenuUsu();
                 menu.setVisible(true);
                 this.dispose();
             } else {
