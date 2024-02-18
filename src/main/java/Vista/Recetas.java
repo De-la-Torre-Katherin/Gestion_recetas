@@ -6,9 +6,9 @@ package Vista;
 
 import Modelo.Recetario;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Controlador.RecetasController;
+
 
 /**
  *
@@ -62,29 +62,27 @@ public class Recetas extends javax.swing.JFrame {
         jPanel = new javax.swing.JPanel();
         txttitulo = new javax.swing.JTextField();
         lblpreparacion = new javax.swing.JLabel();
-        txtid = new javax.swing.JTextField();
-        txtcategoria = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtingredientes = new javax.swing.JTextArea();
-        txtusuario = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblreceta = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtpreparacion = new javax.swing.JTextArea();
-        lblid = new javax.swing.JLabel();
         lbltitulo = new javax.swing.JLabel();
         lblcategoria = new javax.swing.JLabel();
         lblingredientes = new javax.swing.JLabel();
         lblusuario = new javax.swing.JLabel();
-        lblpostres = new javax.swing.JLabel();
-        lbljugos = new javax.swing.JLabel();
-        lbldesayunos = new javax.swing.JLabel();
-        lblplatos = new javax.swing.JLabel();
         btnactualizar = new javax.swing.JButton();
         btnregresar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        cmbusuario = new javax.swing.JComboBox<>();
+        CheckBoxPostre = new javax.swing.JCheckBox();
+        CheckBoxJugos = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        ChecBoxDesayuno = new javax.swing.JCheckBox();
+        scroldesplazamiento = new javax.swing.JScrollBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -100,12 +98,6 @@ public class Recetas extends javax.swing.JFrame {
         });
 
         lblpreparacion.setText("Preparacion:");
-
-        txtid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidActionPerformed(evt);
-            }
-        });
 
         txtingredientes.setColumns(20);
         txtingredientes.setRows(5);
@@ -133,8 +125,6 @@ public class Recetas extends javax.swing.JFrame {
         txtpreparacion.setRows(5);
         jScrollPane3.setViewportView(txtpreparacion);
 
-        lblid.setText("Nro Registro: ");
-
         lbltitulo.setText("Titulo:");
 
         lblcategoria.setText("Categoria:");
@@ -142,14 +132,6 @@ public class Recetas extends javax.swing.JFrame {
         lblingredientes.setText("Ingredientes:");
 
         lblusuario.setText("Usuario:");
-
-        lblpostres.setText("1)POSTRES");
-
-        lbljugos.setText("2)JUGOS ");
-
-        lbldesayunos.setText("3)DESAYUNOS ");
-
-        lblplatos.setText("4)PATOS FUERTES ");
 
         btnactualizar.setText("Actualizar");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,116 +168,135 @@ public class Recetas extends javax.swing.JFrame {
             }
         });
 
+        cmbusuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juan", "Samanta" }));
+
+        CheckBoxPostre.setText("Postres");
+
+        CheckBoxJugos.setText("Jugos");
+        CheckBoxJugos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckBoxJugosActionPerformed(evt);
+            }
+        });
+
+        jCheckBox3.setText("Platos Fuertes");
+
+        ChecBoxDesayuno.setText("Desayunos");
+
+        scroldesplazamiento.addAdjustmentListener(new java.awt.event.AdjustmentListener() {
+            public void adjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {
+                scroldesplazamientoAdjustmentValueChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblid, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                .addComponent(lblpreparacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbltitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lblcategoria))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblpostres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbljugos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbldesayunos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblplatos, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelLayout.createSequentialGroup()
-                                        .addComponent(txtcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 2, Short.MAX_VALUE))
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnactualizar)
-                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(2, 2, 2))
-                            .addComponent(btnregresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanelLayout.createSequentialGroup()
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
-                .addGap(72, 72, 72))
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelLayout.createSequentialGroup()
+                                    .addGap(43, 43, 43)
+                                    .addComponent(lbltitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(lblpreparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblingredientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3))
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelLayout.createSequentialGroup()
+                                        .addComponent(lblcategoria)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(CheckBoxPostre, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(CheckBoxJugos, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ChecBoxDesayuno)
+                                            .addComponent(jCheckBox3)))
+                                    .addGroup(jPanelLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cmbusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanelLayout.createSequentialGroup()
+                                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(41, 41, 41)
+                                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(btnactualizar)
+                                                    .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGap(168, 168, 168)
+                                .addComponent(btnregresar))))
+                    .addGroup(jPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(scroldesplazamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnactualizar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btneliminar))
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblid))
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(lblpostres, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbljugos)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbldesayunos, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lbltitulo)
+                                    .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelLayout.createSequentialGroup()
-                                        .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(3, 3, 3))))
+                                        .addGap(15, 15, 15)
+                                        .addComponent(lblingredientes))
+                                    .addGroup(jPanelLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(lblplatos)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblingredientes)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addComponent(jButton1)
+                                .addGap(68, 68, 68)
+                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CheckBoxPostre))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CheckBoxJugos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ChecBoxDesayuno)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(69, 69, 69)))
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblpreparacion)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnGuardar)
+                                    .addComponent(btneliminar))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1)
+                                    .addComponent(btnactualizar))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnregresar)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnregresar)))
-                .addGap(12, 12, 12)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblcategoria)
-                            .addComponent(lblusuario)
-                            .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblpreparacion))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scroldesplazamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -304,15 +305,16 @@ public class Recetas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(25, 25, 25)
+                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -335,23 +337,98 @@ public class Recetas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowActivated
 
-    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
 
-        Recetario p = new Recetario(Integer.parseInt(txtid.getText()),txttitulo.getText(),txtingredientes.getText(), txtpreparacion.getText(), Integer.parseInt(txtcategoria.getText()),Integer.parseInt(txtusuario.getText()));
+        txttitulo.setText("");
+        txtingredientes.setText("");
+        txtpreparacion.setText("");
+        ChecBoxDesayuno.setSelected(false);
+        CheckBoxJugos.setSelected(false);
+        jCheckBox3.setSelected(false);
+        CheckBoxPostre.setSelected(false);
 
-        RecetasController u= new RecetasController();
-
-        u.ActualizarRecetas(p);
-    }//GEN-LAST:event_btnactualizarActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
 
-        int id = Integer.parseInt(txtid.getText());
-        Recetario p = new Recetario(id,txttitulo.getText(),txtingredientes.getText(), txtpreparacion.getText(), Integer.parseInt(txtcategoria.getText()),Integer.parseInt(txtusuario.getText()));
+        String usu = (String) cmbusuario.getSelectedItem();
+        String titulo = txttitulo.getText().toUpperCase();
 
-        RecetasController rc = new RecetasController();
-        rc.EliminarReceta(p);
+        int idCat = 0;
+
+        if (CheckBoxPostre.isSelected()) {
+            idCat = 1;
+        } else if (CheckBoxJugos.isSelected()) {
+            idCat = 2;
+        } else if (ChecBoxDesayuno.isSelected()) {
+            idCat = 3;
+        } else if (jCheckBox3.isSelected()) {
+            idCat = 4;
+        }
+
+        int idusu;
+
+        switch (usu) {
+            case "Juan":
+            idusu = 1;
+            break;
+            case "Samanta":
+            idusu = 8;
+            break;
+            default:
+            idusu = 0;
+            break;
+        }
+
+        Recetario ct = new Recetario(0, titulo, txtingredientes.getText(), txtpreparacion.getText(),idCat,idusu);
+        RecetasController c = new RecetasController();
+        c.EliminarReceta(ct);
+
     }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+
+        String usu = (String) cmbusuario.getSelectedItem();
+        String titulo = txttitulo.getText().toUpperCase();
+        int idCat = 0;
+
+        if (CheckBoxPostre.isSelected()) {
+            idCat = 1;
+        } else if (CheckBoxJugos.isSelected()) {
+            idCat = 2;
+        } else if (ChecBoxDesayuno.isSelected()) {
+            idCat = 3;
+        } else if (jCheckBox3.isSelected()) {
+            idCat = 4;
+        }
+
+        int idusu;
+
+        switch (usu) {
+            case "Juan":
+            idusu = 1;
+            break;
+            case "Samanta":
+            idusu = 8;
+            break;
+            default:
+            idusu = 0;
+            break;
+        }
+
+        try {
+            Recetario ct = new Recetario(0, titulo, txtingredientes.getText(), txtpreparacion.getText(), idCat, idusu);
+            RecetasController c = new RecetasController();
+            c.CrearReceta(ct);
+            listaReceta.add(ct);
+            setDatos();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         // TODO add your handling code here:
@@ -360,58 +437,73 @@ public class Recetas extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnregresarActionPerformed
 
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+
+        String usu = (String) cmbusuario.getSelectedItem();
+
+        String titulo = txttitulo.getText().toUpperCase();
+
+        int idCat = 0;
+
+        if (CheckBoxPostre.isSelected()) {
+            idCat = 1;
+        } else if (CheckBoxJugos.isSelected()) {
+            idCat = 2;
+        } else if (ChecBoxDesayuno.isSelected()) {
+            idCat = 3;
+        } else if (jCheckBox3.isSelected()) {
+            idCat = 4;
+        }
+
+        int idUsu = 0;
+
+        // Usuario
+        if ("Juan".equals(usu)) {
+            idUsu = 1;
+        } else if ("Samanta".equals(usu)) {
+            idUsu = 8;
+        }
+
+        Recetario ct = new Recetario(0, titulo, txtingredientes.getText(), txtpreparacion.getText(),idCat,idUsu);
+
+        RecetasController c = new RecetasController();
+        c.ActualizarRecetas(ct);
+
+    }//GEN-LAST:event_btnactualizarActionPerformed
+
     private void tblrecetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblrecetaMouseClicked
         // TODO add your handling code here:
 
         DefaultTableModel dtm = (DefaultTableModel) tblreceta.getModel();
 
         int filaSeleccionada = tblreceta.getSelectedRow();
-        if (filaSeleccionada != -1) {
+        
 
-            txtid.setText(dtm.getValueAt(filaSeleccionada, 0).toString());
-            txttitulo.setText((String) dtm.getValueAt(filaSeleccionada, 1));
-            txtingredientes.setText((String) dtm.getValueAt(filaSeleccionada, 2));
-            txtpreparacion.setText((String) dtm.getValueAt(filaSeleccionada, 3));
-            txtcategoria.setText(dtm.getValueAt(filaSeleccionada, 4).toString());
-            txtusuario.setText(dtm.getValueAt(filaSeleccionada, 5).toString());
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Seleccione una fila antes de editar.");
-        }
+            txttitulo.setText(getString(dtm.getValueAt(filaSeleccionada, 1)));
+            txtingredientes.setText(getString(dtm.getValueAt(filaSeleccionada,2)));
+            txtpreparacion.setText(getString(dtm.getValueAt(filaSeleccionada, 3)));
+            cmbusuario.setSelectedItem(getString(dtm.getValueAt(filaSeleccionada,4 )));
+        
+        
     }//GEN-LAST:event_tblrecetaMouseClicked
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-       String titulo = txttitulo.getText().toUpperCase();
-        Recetario ct = new Recetario(0, titulo, txtingredientes.getText(), txtpreparacion.getText(),Integer.parseInt(txtcategoria.getText()),Integer.parseInt(txtusuario.getText()));
-        RecetasController c = new RecetasController();
-        c.CrearReceta(ct);
-        listaReceta.add(ct);
-        setDatos();
-
-       
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-     txtid.setText("");
-    txttitulo.setText("");
-    txtingredientes.setText("");
-    txtpreparacion.setText("");
-    txtcategoria.setText("");
-    txtusuario.setText("");
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txttituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttituloKeyTyped
         // TODO add your handling code here:zzzzzzz
     }//GEN-LAST:event_txttituloKeyTyped
+
+    private void scroldesplazamientoAdjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {//GEN-FIRST:event_scroldesplazamientoAdjustmentValueChanged
+        int value = evt.getValue();
+
+        jPanel.setLocation(jPanel.getX(), -value);
+
+    }//GEN-LAST:event_scroldesplazamientoAdjustmentValueChanged
+
+    private void CheckBoxJugosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxJugosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckBoxJugosActionPerformed
+private String getString(Object value) {
+    return (value != null) ? value.toString() : "";
+}
 
     /**
      * @param args the command line arguments
@@ -450,31 +542,29 @@ public class Recetas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox ChecBoxDesayuno;
+    private javax.swing.JCheckBox CheckBoxJugos;
+    private javax.swing.JCheckBox CheckBoxPostre;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnregresar;
+    private javax.swing.JComboBox<String> cmbusuario;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JPanel jPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblcategoria;
-    private javax.swing.JLabel lbldesayunos;
-    private javax.swing.JLabel lblid;
     private javax.swing.JLabel lblingredientes;
-    private javax.swing.JLabel lbljugos;
-    private javax.swing.JLabel lblplatos;
-    private javax.swing.JLabel lblpostres;
     private javax.swing.JLabel lblpreparacion;
     private javax.swing.JLabel lbltitulo;
     private javax.swing.JLabel lblusuario;
+    private javax.swing.JScrollBar scroldesplazamiento;
     private javax.swing.JTable tblreceta;
-    private javax.swing.JTextField txtcategoria;
-    private javax.swing.JTextField txtid;
     private javax.swing.JTextArea txtingredientes;
     private javax.swing.JTextArea txtpreparacion;
     private javax.swing.JTextField txttitulo;
-    private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }

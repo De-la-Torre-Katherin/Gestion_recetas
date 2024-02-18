@@ -10,21 +10,26 @@ package Modelo;
  */
 public class Persona {
      private int id;
+     private String cedula;
      private String nombre;
      private String apellido;
+     private String direccion;
+     private String correo;
      private String contrasenia;
-     private int rol;
+     private int  id_rol;
 
     public Persona() {
     }
 
-    public Persona(int id,String nombre, String apellido, String contrasenia,int rol) {
-        this.id=id;
+     public Persona(int id, String cedula, String nombre, String apellido, String direccion, String correo, String contrasenia, int id_rol) {
+        this.id = id;
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.direccion = direccion;
+        this.correo = correo;
         this.contrasenia = contrasenia;
-        this.rol=rol;
-        
+        this.id_rol = id_rol;
     }
 
     public int getId() {
@@ -35,15 +40,14 @@ public class Persona {
         this.id = id;
     }
 
-    public int getRol() {
-        return rol;
+    public String getCedula() {
+        return cedula;
     }
 
-    public void setRol(int rol) {
-        this.rol = rol;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
-    
     public String getNombre() {
         return nombre;
     }
@@ -60,6 +64,22 @@ public class Persona {
         this.apellido = apellido;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     public String getContrasenia() {
         return contrasenia;
     }
@@ -67,6 +87,16 @@ public class Persona {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-     
+
+    public int getRol() {
+        return id_rol;
+    }
+
+    public void setRol(int id_rol) {
+        this.id_rol = id_rol;
+    }
+
+
     
+   
 }

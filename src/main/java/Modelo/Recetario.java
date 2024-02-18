@@ -18,7 +18,8 @@ public class Recetario {
     private int usuid;
     
 public Recetario(){
-    
+      
+            
 }
     public Recetario(int reid, String titulo, String ingredientes, String preparacion, int catid, int usuid) {
         this.reid = reid;

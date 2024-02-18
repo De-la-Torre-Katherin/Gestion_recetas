@@ -56,7 +56,7 @@ public class RecetasController {
             res = ejecutar.executeUpdate();
 
             if (res > 0) {
-                JOptionPane.showMessageDialog(null, "RECETA CR4EADA CON EXITO");
+                JOptionPane.showMessageDialog(null, "RECETA CREADA CON EXITO");
             ejecutar.close();
             
             } else {
@@ -67,7 +67,7 @@ public class RecetasController {
             
             System.out.println("hiewfhue"+e);
         }
-    } catch (HeadlessException ex) {
+    } catch (HeadlessException e) {
     }
 }
     
@@ -111,32 +111,38 @@ public class RecetasController {
 return null;
     }
     
-    
-    public void ActualizarRecetas(Recetario r) {
+   public void ActualizarRecetas(Recetario r) {
     try {
-        String sql = "CALL ActualizarReceta(?,?,?,?,?,?)";
-        ejecutar = (PreparedStatement) conectado.prepareCall(sql);
-        ejecutar.setInt(1, r.getReid());
-        ejecutar.setString(2, r.getTitulo());
-        ejecutar.setString(3, r.getIngredientes());
-        ejecutar.setString(4, r.getPreparacion());
-        ejecutar.setInt(5, r.getCatid());
-         ejecutar.setInt(6, r.getUsuid());
+        String sql = "CALL ActualizarReceta(?,?,?,?,?)";
+        
+        try (PreparedStatement ejecutar = conectado.prepareCall(sql)) {
+           
+            ejecutar.setString(1, r.getTitulo());
+            ejecutar.setString(2, r.getIngredientes());
+            ejecutar.setString(3, r.getPreparacion());
+            ejecutar.setInt(4, r.getCatid());
+            ejecutar.setInt(5, r.getUsuid());
+            
+            
+            
+            res = ejecutar.executeUpdate();
 
-        int res = ejecutar.executeUpdate();
-
-        if (res > 0) {
-            JOptionPane.showMessageDialog(null, "RECETA ACTUALIZADA CON ÉXITO");
-        } else  {
-            JOptionPane.showMessageDialog(null, "NO SE PUDO ACTUALIZAR LOS DATOS DE LA RECETA");
+            if (res > 0) {
+                JOptionPane.showMessageDialog(null, "RECETA ACTUALIZADA CON EXITO");
+            ejecutar.close();
+            
+            } else {
+                JOptionPane.showMessageDialog(null, "REVISAR LA INFORMACION INGRESADA");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "COMUNICARSE CON EL ADMINISTRADOR"+e);
+            
+            System.out.println("hiewfhue"+e);
         }
-
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "COMUNICARSE CON EL ADMINISTRADOR: " + e);
-        System.out.println("bdd" + e);
-        e.printStackTrace();
+    } catch (HeadlessException e) {
     }
 }
+
    
     
     
@@ -144,11 +150,11 @@ return null;
     String sql = "CALL EliminarReceta(?)";
 
     try (PreparedStatement ejecutar = conectado.prepareCall(sql)) {
-        ejecutar.setInt(1, p.getReid());
+        ejecutar.setString(1, p.getTitulo());
 
         boolean resultado = ejecutar.execute(); 
         if (!resultado) {
-            JOptionPane.showMessageDialog(null, "rfECETA ELIMINADA CON ÉXITO");
+            JOptionPane.showMessageDialog(null, "LA RECETA A SIDO  ELIMINADA CON ÉXITO");
         } else {
             JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR LA RECETA");
         }

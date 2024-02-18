@@ -41,36 +41,32 @@ public class UsuariocoController {
     
     public void CrearUsuario(Persona r) {
     try {
-        String sql = "CALL InsertarUsuario(?,?,?,?)";
-        
+        String sql = "CALL InsertarUsuario(?,?,?,?,?,?,?)";
+
         try (PreparedStatement ejecutar = conectado.prepareCall(sql)) {
-            ejecutar.setString(1,r.getNombre() );
-            ejecutar.setString(2,r.getApellido());
-            ejecutar.setString(3,r.getContrasenia());
-            ejecutar.setInt(4,r.getRol());
-            
-            
-            
+            ejecutar.setString(1, r.getCedula());
+            ejecutar.setString(2, r.getNombre());
+            ejecutar.setString(3, r.getApellido());
+            ejecutar.setString(4, r.getDireccion());
+            ejecutar.setString(5, r.getCorreo());
+            ejecutar.setString(6, r.getContrasenia());
+            ejecutar.setInt(7, r.getRol()); 
+
             res = ejecutar.executeUpdate();
 
             if (res > 0) {
                 JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO");
-            ejecutar.close();
-            
-            } else {
+                } else {
                 JOptionPane.showMessageDialog(null, "REVISAR LA INFORMACION INGRESADA");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "COMUNICARSE CON EL ADMINISTRADOR"+e);
-            
-            System.out.println("hiewfhue"+e);
+            JOptionPane.showMessageDialog(null, "COMUNICARSE CON EL ADMINISTRADOR" + e);
+            System.out.println("Error al ejecutar la consulta: " + e);
         }
     } catch (HeadlessException ex) {
     }
 }
-    
-    
-    
+
     
     public ArrayList<Object[]>  ObtenerUsuarios() {
     ArrayList<Object[]> listaUsuario= new ArrayList<>();
@@ -86,8 +82,8 @@ public class UsuariocoController {
             int cont =1;
 
            while (res.next()) {
-                Object[] fila = new Object[5]; 
-                for (int i = 1; i <5; i++) {
+                Object[] fila = new Object[8]; 
+                for (int i = 1; i <8; i++) {
                     fila[i] = res.getObject(i+1);
                                 
                 }
@@ -112,13 +108,15 @@ return null;
     
     public void ActualizarUsuario(Persona r) {
     try {
-        String sql = "CALL ActualizarUsuario(?,?,?,?,?)";
+        String sql = "CALL ActualizarUsuario(?,?,?,?,?,?,?)";
         ejecutar = (PreparedStatement) conectado.prepareCall(sql);
-        ejecutar.setInt(1, r.getId());
-        ejecutar.setString(2, r.getNombre());
-        ejecutar.setString(3, r.getApellido());
-        ejecutar.setString(4, r.getContrasenia()); 
-        ejecutar.setInt(5, r.getRol());
+        ejecutar.setString(1, r.getCedula());
+        ejecutar.setString(2,r.getNombre() );
+        ejecutar.setString(3,r.getApellido());
+        ejecutar.setString(4,r.getDireccion());
+        ejecutar.setString(5,r.getCorreo());
+        ejecutar.setString(6,r.getContrasenia());
+        ejecutar.setInt(7,r.getRol());
 
         int res = ejecutar.executeUpdate();
 
@@ -141,10 +139,10 @@ return null;
     String sql = "CALL EliminarUsuario(?)";
 
     try (PreparedStatement ejecutar = conectado.prepareCall(sql)) {
-        ejecutar.setInt(1, p.getId());
+        ejecutar.setString(1, p.getCedula());
 
-        boolean resultado = ejecutar.execute(); 
-        if (!resultado) {
+        int resultado = ejecutar.executeUpdate();
+        if (resultado > 0) {
             JOptionPane.showMessageDialog(null, "USUARIO ELIMINADO CON ÉXITO");
         } else {
             JOptionPane.showMessageDialog(null, "NO SE PUDO ELIMINAR EL USUARIO");
